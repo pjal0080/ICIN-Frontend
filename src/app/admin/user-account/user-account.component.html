@@ -1,0 +1,44 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">phoneNo</th>
+            <th scope="col">primaryAccount</th>
+            <th scope="col">savingsAccount</th>
+            <th scope="col">enabled</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users | paginate:{itemsPerPage:10,currentPage:p};">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.phoneNo}}</td>
+            <td>
+              <a href="javascript:void(0);" *ngIf="user.primaryAccount==null" (click)="createPrimaryAccount(user)">create</a>
+              <p *ngIf="user.primaryAccount!=null">{{user.primaryAccount.balance}}</p>
+              
+            </td>
+            <td>
+              <a href="javascript:void(0);" *ngIf="user.savingsAccount==null" (click)="createSavingsAccount(user)">create</a>
+              <p *ngIf="user.savingsAccount!=null">{{user.savingsAccount.balance}}</p>
+              
+              </td>
+            <td>
+              <p *ngIf="user.enabled==true">enabled</p>
+              <p *ngIf="user.enabled==false">disabled</p>
+            </td>
+            <td>
+                <a href="javascript:void(0);" *ngIf="user.enabled==true" (click)="changeAction(user)">disable</a>
+                <a href="javascript:void(0);" *ngIf="user.enabled==false"(click)="changeAction(user)">enable</a>
+            </td>
+            
+          </tr>
+        </tbody>
+        <pagination-controls (pageChange)="p=$event "></pagination-controls>
+      </table>
+      
+
+</div>

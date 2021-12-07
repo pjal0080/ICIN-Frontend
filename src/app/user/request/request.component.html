@@ -1,0 +1,63 @@
+
+<div class="container">
+
+    <div class="card" style="margin-left:20%;margin-right:20%;">
+        <div class="card-header" style="background-color:#B0E0E6 ;">
+            <b style="font-size: 140%; color: #022122;">Cheque Book Request</b>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 style="color:#067786 ;">Select Account Type:</h4>
+                </div>
+                <div class="col-lg-6" style="color:#067786 ;font-size:160%">
+                    <form [formGroup]="accountTypeForm" >
+                        <select id="country" formControlName="account">
+                            <option *ngFor="let c of accountType" [ngValue]="c">{{ c }}</option>
+                        </select>
+                    </form>
+                </div>
+
+            </div>
+            
+
+        </div>
+        <div class="row">
+            <p style="color:green ; font-size: 150%;margin-top: 10%;margin-left: 5%;">{{statusMessage1}}</p>
+        </div>
+        <div class="card-footer">
+            <a href="javascript:void(0);" class="btn btn-primary" style="background-color:#067786 ;float:right" (click)="requestChequeBook()">Request</a>
+        </div>
+    </div>
+
+    <div class="card" style="margin-left:20%;margin-right:20%;margin-top: 5%;">
+        <div class="card-header" style="background-color:#B0E0E6 ;">
+            <b style="font-size: 140%; color: #022122;"> Check Cheque Book Status</b>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 style="color:#067786 ;">Select Account Type:</h4>
+                </div>
+                <div class="col-lg-6" style="color:#067786 ;font-size:160%">
+                    <form [formGroup]="accountTypeForm1" >
+                        <select id="country1" formControlName="account">
+                            <option *ngFor="let c of accountType1" [ngValue]="c">{{ c }}</option>
+                        </select>
+                    </form>
+                </div>
+                
+            </div>
+            <div class="row">
+                <p style="color:green ; font-size: 150%;margin-top: 10%;margin-left: 5%;">{{statusMessage}}</p>
+            </div>
+            
+
+        </div>
+        <div class="card-footer">
+            <a href="javascript:void(0);" class="btn btn-primary" style="background-color:#067786 ;float:right" (click)="checkStatus()">Check Status</a>
+        </div>
+    </div>
+    
+</div>
+

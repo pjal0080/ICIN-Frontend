@@ -1,0 +1,40 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">userId</th>
+            <th scope="col">username</th>
+            <th scope="col">accountType</th>
+            <th scope="col">Confirmed?</th>
+            <th scope="col">Action</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr *ngFor="let cheque of chequeBooks | paginate:{itemsPerPage:10,currentPage:p};">
+            <td>{{cheque.userId}}</td>
+            <td>{{cheque.username}}</td>
+            <td>{{cheque.accountType}}</td>
+            <td>
+              <p *ngIf="cheque.checkBookStatus==false">Pending</p>  
+            </td>
+            <td>
+              <a href="javascript:void(0);" *ngIf="cheque.checkBookStatus==false" (click)="confirmChequebookRequest(cheque.userId,cheque.accountType)">confirm</a>
+              <!-- <p *ngIf="cheque.checkBookStatus==false">{{user.savingsAccount.balance}}</p> -->
+              
+            </td>
+            
+            
+          </tr>
+          <tr *ngIf="isEmpty==true">
+              <td>No pending CheckBook Request</td>
+
+          </tr>
+
+        </tbody>
+        <pagination-controls *ngIf="isEmpty==false" style="text-align: center;" (pageChange)="p=$event "></pagination-controls>
+      </table>
+      
+
+</div>
+

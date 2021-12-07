@@ -1,0 +1,61 @@
+<div class="card" style="margin-left:20%;margin-right:20%;margin-top: 5%;">
+    <div class="card-header" style="background-color:#B0E0E6 ;">
+        <b style="font-size: 140%; color: #022122;">withdraw </b>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4 style="color:#067786 ;">Select Account Type:</h4>
+                <label style="color:#067786 ;font-size:180%" for="amount">Amount</label>
+                
+            </div>
+            <div class="col-lg-6" style="color:#067786 ;font-size:160%">
+                <form [formGroup]="withdrawForm" >
+                    <div class="form-group">
+                        <select id="country" formControlName="account">
+                            <option *ngFor="let c of accountType" [ngValue]="c">{{ c }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="amount" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+                        <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                            <div *ngIf="f.amount.errors.required">amount is required</div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        
+                        <input type="text" formControlName="accountNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.accountNo.errors }" />
+                        <div *ngIf="submitted && f.accountNo.errors" class="invalid-feedback">
+                            <div *ngIf="f.accountNo.errors.required">Account Number is required.</div>  
+                                <div *ngIf="f.accountNo.errors.pattern">Please, Enter 16 digit Account Number.</div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        
+                        <input type="email" formControlName="receiverUsername" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.receiverUsername.errors }" />
+                        <div *ngIf="submitted && f.receiverUsername.errors" class="invalid-feedback">
+                            <div *ngIf="f.receiverUsername.errors.required">Receiver's Username is required</div>
+                            <div *ngIf="f.receiverUsername.errors.pattern">Please, Enter Valid Receiver's Username</div>
+                
+                        </div>
+                    </div> -->
+
+
+                    
+
+                </form>
+            </div>
+
+        </div>
+        <div class="row">
+            <p style="color:green ; font-size: 150%;margin-top: 10%;margin-left: 5%;">{{statusMessage}}</p>
+        </div>
+        
+
+    </div>
+    <div class="card-footer">
+        <a href="javascript:void(0);" class="btn btn-primary" style="background-color:#067786 ;float:right" (click)="withdrawMoney()">withdraw</a>
+    </div>
+</div>
+
